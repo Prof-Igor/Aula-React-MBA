@@ -1,25 +1,54 @@
-import logo from './logo.svg';
-import './App.css';
+import Frase from "./components/Frase.js"
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const estiloBotao = {
+        marginTop: 12, 
+        paddingTop: 8, 
+        paddingBottom: 8,
+        backgroundColor: 'blueviolet', 
+        color: 'white', 
+        border: 'none', 
+        width: '100%',
+        borderRadius: 8
+    };
+    const textoLabel = "Nome:";
+
+    function obterTextoBotao() {
+        return "Enviar";
+    }
+
+    function enviar(){
+        return alert("Enviou!")
+    }
+
+    return (
+        <div style={{
+            margin: 'auto', 
+            width: 768, 
+            backgroundColor: '#EEE', 
+            padding: 12, 
+            borderRadius: 8
+        }}>
+            <Frase />
+            <label className="rotulo" htmlFor="nome" style={{
+                display: 'block',
+                marginBottom: 4
+            }}>{textoLabel}</label>
+            <input type="text" id="nome" style={{
+                paddingTop: 8, 
+                paddingBottom: 8,
+                borderStyle: 'hidden', 
+                width: '100%', 
+                borderRadius: 8, 
+                outline: 'none', 
+                boxSizing:'border-box'
+            }} />
+            <button style={estiloBotao} onClick={enviar} >{obterTextoBotao()}</button>
+            <Frase />
+            <Frase />
+            <Frase />
+        </div>
+    )
 }
 
-export default App;
+export default App
