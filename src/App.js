@@ -1,52 +1,33 @@
 import Frase from "./components/Frase.js"
+import "./style.css"
+import "bootstrap/dist/css/bootstrap.min.css"
+import Botao from "./components/Botao.js";
+import Entrada from "./components/Entrada.js";
 
 function App() {
-    const estiloBotao = {
-        marginTop: 12, 
-        paddingTop: 8, 
-        paddingBottom: 8,
-        backgroundColor: 'blueviolet', 
-        color: 'white', 
-        border: 'none', 
-        width: '100%',
-        borderRadius: 8
-    };
     const textoLabel = "Nome:";
+    let texto = "Texto dinâmico!"
 
-    function obterTextoBotao() {
-        return "Enviar";
-    }
+    var nota = 3
 
-    function enviar(){
-        return alert("Enviou!")
+    function voltar(){
+        return alert("Voltou!")
     }
 
     return (
-        <div style={{
-            margin: 'auto', 
-            width: 768, 
-            backgroundColor: '#EEE', 
-            padding: 12, 
-            borderRadius: 8
-        }}>
-            <Frase />
-            <label className="rotulo" htmlFor="nome" style={{
-                display: 'block',
-                marginBottom: 4
-            }}>{textoLabel}</label>
-            <input type="text" id="nome" style={{
-                paddingTop: 8, 
-                paddingBottom: 8,
-                borderStyle: 'hidden', 
-                width: '100%', 
-                borderRadius: 8, 
-                outline: 'none', 
-                boxSizing:'border-box'
-            }} />
-            <button style={estiloBotao} onClick={enviar} >{obterTextoBotao()}</button>
-            <Frase />
-            <Frase />
-            <Frase />
+        <div className="divApp">
+            <Frase frase="Olá tudo bem!" titulo="Titulo qualquer." nota={7} />
+            <Entrada textoLabel={textoLabel}>
+                <p>Olá digite o nome no campo abaixo!</p>
+            </Entrada>
+            <Entrada textoLabel="Senha: " type="password">
+                <p>Olá digite a senha no campo abaixo!</p>
+                <Botao texto="Enviar" />
+            </Entrada>
+            <Frase frase={texto} nota={9} />
+            <Frase nota = {10}/>
+            <Frase nota = {nota} />
+            <Botao texto="Voltar" funcao={voltar} />
         </div>
     )
 }
